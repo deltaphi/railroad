@@ -102,22 +102,11 @@ F 3 "~" H 8950 3850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:Conn_ARM_JTAG_SWD_20 J4
-U 1 1 5ECB92C7
-P 1400 5900
-F 0 "J4" H 871 5946 50  0000 R CNN
-F 1 "Conn_ARM_JTAG_SWD_10" H 871 5855 50  0000 R CNN
-F 2 "Connector_IDC:IDC-Header_2x10_P2.54mm_Vertical" H 1400 5900 50  0001 C CNN
-F 3 "http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresight_components_trm.pdf" V 1050 4650 50  0001 C CNN
-	1    1400 5900
-	1    0    0    -1  
-$EndComp
-$Comp
 L Connector:Conn_01x02_Male J8
 U 1 1 5ECC13F7
 P 8100 850
 F 0 "J8" V 8162 894 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 8253 894 50  0000 L CNN
+F 1 "USB_PWR" V 8253 894 50  0000 L CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 8100 850 50  0001 C CNN
 F 3 "~" H 8100 850 50  0001 C CNN
 	1    8100 850 
@@ -167,19 +156,6 @@ Wire Wire Line
 Wire Wire Line
 	8100 1350 8500 1350
 Wire Wire Line
-	8500 1350 8500 1250
-$Comp
-L power:VCC #PWR0103
-U 1 1 5ECC6F2A
-P 8500 1250
-F 0 "#PWR0103" H 8500 1100 50  0001 C CNN
-F 1 "VCC" H 8517 1423 50  0000 C CNN
-F 2 "" H 8500 1250 50  0001 C CNN
-F 3 "" H 8500 1250 50  0001 C CNN
-	1    8500 1250
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
 	7350 1250 7650 1250
 Wire Wire Line
 	7350 1450 7650 1450
@@ -190,11 +166,11 @@ Wire Wire Line
 Text Label 7650 1650 0    50   ~ 0
 DTR
 Text Label 7650 1450 0    50   ~ 0
-RX
+RX0
 Text Label 7650 1250 0    50   ~ 0
 CTS
 Text Label 7650 1550 0    50   ~ 0
-TX
+TX0
 Wire Wire Line
 	7750 4450 7750 4550
 Connection ~ 7750 4550
@@ -379,32 +355,6 @@ SDA
 Text Label 9150 4150 0    50   ~ 0
 SCL
 $Comp
-L power:VCC #PWR0106
-U 1 1 5ECE9149
-P 1300 4950
-F 0 "#PWR0106" H 1300 4800 50  0001 C CNN
-F 1 "VCC" H 1317 5123 50  0000 C CNN
-F 2 "" H 1300 4950 50  0001 C CNN
-F 3 "" H 1300 4950 50  0001 C CNN
-	1    1300 4950
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR0107
-U 1 1 5ECE9700
-P 1300 6800
-F 0 "#PWR0107" H 1300 6550 50  0001 C CNN
-F 1 "GND" H 1305 6627 50  0000 C CNN
-F 2 "" H 1300 6800 50  0001 C CNN
-F 3 "" H 1300 6800 50  0001 C CNN
-	1    1300 6800
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1300 6700 1300 6800
-Wire Wire Line
-	1300 5100 1300 4950
-$Comp
 L power:GND #PWR0108
 U 1 1 5ECEC777
 P 1350 4400
@@ -553,4 +503,94 @@ Text Label 2500 3300 2    50   ~ 0
 CANRX
 Text Label 2500 3200 2    50   ~ 0
 CANTX
+$Comp
+L STM32-BARE:STM32-BARE U2
+U 1 1 5ECAF15A
+P 4850 2500
+F 0 "U2" H 4850 3815 50  0000 C CNN
+F 1 "STM32-BARE" H 4850 3724 50  0000 C CNN
+F 2 "Package_DIP:DIP-40_W15.24mm_Socket_LongPads" H 4850 2500 50  0001 C CNN
+F 3 "DOCUMENTATION" H 4850 2500 50  0001 C CNN
+	1    4850 2500
+	1    0    0    -1  
+$EndComp
+Text Label 8500 1350 0    50   ~ 0
+5V
+Text Label 4100 3250 2    50   ~ 0
+5V
+$Comp
+L power:GND #PWR0103
+U 1 1 5ECB2109
+P 6050 1550
+F 0 "#PWR0103" H 6050 1300 50  0001 C CNN
+F 1 "GND" H 6055 1377 50  0000 C CNN
+F 2 "" H 6050 1550 50  0001 C CNN
+F 3 "" H 6050 1550 50  0001 C CNN
+	1    6050 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0106
+U 1 1 5ECB2504
+P 3900 3350
+F 0 "#PWR0106" H 3900 3100 50  0001 C CNN
+F 1 "GND" H 3905 3177 50  0000 C CNN
+F 2 "" H 3900 3350 50  0001 C CNN
+F 3 "" H 3900 3350 50  0001 C CNN
+	1    3900 3350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 3350 4100 3350
+Wire Wire Line
+	5600 1650 5600 1550
+Wire Wire Line
+	5600 1550 6050 1550
+Connection ~ 5600 1550
+$Comp
+L power:VCC #PWR0107
+U 1 1 5ECB7ADC
+P 5800 1750
+F 0 "#PWR0107" H 5800 1600 50  0001 C CNN
+F 1 "VCC" H 5817 1923 50  0000 C CNN
+F 2 "" H 5800 1750 50  0001 C CNN
+F 3 "" H 5800 1750 50  0001 C CNN
+	1    5800 1750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5600 1750 5800 1750
+$Comp
+L power:VCC #PWR0114
+U 1 1 5ECBB281
+P 4200 3650
+F 0 "#PWR0114" H 4200 3500 50  0001 C CNN
+F 1 "VCC" H 4217 3823 50  0000 C CNN
+F 2 "" H 4200 3650 50  0001 C CNN
+F 3 "" H 4200 3650 50  0001 C CNN
+	1    4200 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4100 3450 4100 3650
+Wire Wire Line
+	4100 3650 4200 3650
+Text Label 4100 3050 2    50   ~ 0
+CANRX
+Text Label 4100 3150 2    50   ~ 0
+CANTX
+Text Label 4100 2150 2    50   ~ 0
+RX0
+Text Label 4100 2050 2    50   ~ 0
+TX0
+Text Label 4100 2850 2    50   ~ 0
+SCL
+Text Label 4100 2950 2    50   ~ 0
+SDA
+Text Label 4100 2450 2    50   ~ 0
+JTDI
+Text Label 4100 2550 2    50   ~ 0
+JTDO
+Text Label 4100 2650 2    50   ~ 0
+JTRST
 $EndSCHEMATC
