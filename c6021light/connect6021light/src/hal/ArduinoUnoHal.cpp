@@ -94,11 +94,15 @@ void ArduinoUnoHal::loopCan() {
 }
 
 void ArduinoUnoHal::SendPacket(const RR32Can::Identifier& id, const RR32Can::Data& data) {
-  CAN.beginExtendedPacket(id.makeIdentifier(), data.dlc, false);
+  Serial.print(F("SendPacket CAN: "));
+  Serial.print(CAN.beginExtendedPacket(id.makeIdentifier(), data.dlc, false), DEC);
+  Serial.print(' ');
   for (uint8_t i = 0; i < data.dlc; ++i) {
-    CAN.write(data.data[i]);
+    Serial.print(CAN.write(data.data[i]), DEC);
   }
-  CAN.endPacket();
+  Serial.print(' ');
+  Serial.print(CAN.endPacket(), DEC);
+  Serial.println('.');
 }
 
 void ArduinoUnoHal::SendI2CMessage(const MarklinI2C::Messages::AccessoryMsg& msg) {
